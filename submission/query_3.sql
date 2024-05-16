@@ -9,3 +9,5 @@ CREATE OR REPLACE TABLE danfanderson48529.actors_history_scd (
 )
 WITH
     (FORMAT = 'PARQUET')
+
+--
