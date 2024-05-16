@@ -1,5 +1,6 @@
 INSERT INTO danfanderson48529.actors (actor, actor_id, films, quality_class, is_active, current_year)
 
+--
 -- cte that holds config values (i.e., query year)
 WITH cte_cfg AS (
     SELECT 1999 AS current_year
