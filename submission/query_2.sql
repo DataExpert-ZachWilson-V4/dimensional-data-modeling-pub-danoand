@@ -3,7 +3,7 @@ INSERT INTO danfanderson48529.actors (actor, actor_id, films, quality_class, is_
 --
 -- cte that holds config values (i.e., query year)
 WITH cte_cfg AS (
-    SELECT 1999 AS current_year
+    SELECT 2000 AS current_year
 ),
 -- cte that reflects the universe of actors
 cte_unique_actors AS (
@@ -64,7 +64,7 @@ cte_years_films AS (
     SELECT
         ag.actor,
         ag.actor_id,
-        CASE WHEN ag.is_active THEN ARRAY_AGG(ROW(dt.film, dt.votes, dt.rating, dt.film_id)) ELSE ARRAY[] END AS films,
+        CASE WHEN ag.is_active THEN ARRAY_AGG(ROW(dt.year, dt.film, dt.votes, dt.rating, dt.film_id)) ELSE ARRAY[] END AS films,
         ag.quality_class,
         ag.is_active,
         ag.current_year
