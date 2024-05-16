@@ -1,3 +1,5 @@
+-- Query 5 incrementally populate the table with the history of actors with Slowly Changing Dimension (SCD) Type 2 attributes 
+INSERT INTO danfanderson48529.actors_history_scd
 WITH
     -- cte_strt_year houses the requested processsing year
     cte_strt_year as (
@@ -10,7 +12,7 @@ WITH
         FROM
             danfanderson48529.actors_history_scd
         WHERE
-            current_year = (SELECT prev_scd_year FROM cte_strt_year)
+            end_date = (SELECT prev_scd_year FROM cte_strt_year)
     ),
     -- cte_current_year_actors represents the scd next year's actor details
     cte_current_year_actors AS (
@@ -70,8 +72,9 @@ WITH
     )
 -- construct the SCD Type 2 records for each actor and transform the array of changes into individual rows
 SELECT
-    ctc.*,
-    arr.*
+    ctc.actor,
+    ctc.actor_id,
+    t.*
 FROM
     cte_changes ctc
-    CROSS JOIN UNNEST (ctc.change_array) AS arr
+    CROSS JOIN UNNEST (ctc.change_array) AS t(quality_class, is_active, start_date, end_date) 
