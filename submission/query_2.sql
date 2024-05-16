@@ -75,3 +75,5 @@ cte_years_films AS (
 )
 SELECT actor, actor_id, films, quality_class, is_active, current_year
 FROM cte_years_films
+
+--
