@@ -59,3 +59,5 @@ GROUP BY
     cts.actor,
     cts.actor_id,
     cts.streak_identifier
+
+--
