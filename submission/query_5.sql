@@ -78,3 +78,5 @@ SELECT
 FROM
     cte_changes ctc
     CROSS JOIN UNNEST (ctc.change_array) AS t(quality_class, is_active, start_date, end_date) 
+
+-- update query_5.sql
