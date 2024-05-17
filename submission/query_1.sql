@@ -11,7 +11,7 @@ CREATE OR REPLACE TABLE danfanderson48529.actors (
       rating DOUBLE,
       film_id VARCHAR
     )
-  ),b
+  ),
   quality_class VARCHAR,
   is_active BOOLEAN,
   current_year INTEGER
